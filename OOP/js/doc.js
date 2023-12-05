@@ -1,12 +1,3 @@
-window.onload = function () {
-  let form = document.getElementById("petForm");
-  form.addEventListener("submit", handleSubmit);
-};
-
-const handleSubmit = function (e) {
-  e.preventDefault();
-};
-
 class User {
   constructor(firstName, lastName, age, location) {
     this.firstName = firstName;
@@ -44,19 +35,28 @@ class Pet {
   }
 }
 
-let petName = document.getElementById("petName").value;
-let ownerName = document.getElementById("ownerName").value;
-let species = document.getElementById("species").value;
-let breed = document.getElementById("breed").value;
+window.onload = function () {
+  let form = document.getElementById("petForm");
+  form.addEventListener("submit", handleSubmit);
+};
 
-let pet = new Pet(petName, ownerName, species, breed);
+const handleSubmit = function (e) {
+  e.preventDefault();
 
-let petList = document.getElementById("petList");
-let listItem = document.createElement("li");
-listItem.textContent = `Pet Name: ${pet.petName}, Owner Name: ${pet.ownerName}, Species: ${pet.species}, Breed: ${pet.breed}`;
-petList.appendChild(listItem);
+  let petName = document.getElementById("petName").value;
+  let ownerName = document.getElementById("ownerName").value;
+  let species = document.getElementById("species").value;
+  let breed = document.getElementById("breed").value;
 
-document.getElementById("petName").value = "";
-document.getElementById("ownerName").value = "";
-document.getElementById("species").value = "";
-document.getElementById("breed").value = "";
+  let pet = new Pet(petName, ownerName, species, breed);
+
+  let petList = document.getElementById("petList");
+  let listItem = document.createElement("li");
+  listItem.textContent = `Pet Name: ${pet.petName}, Owner Name: ${pet.ownerName}, Species: ${pet.species}, Breed: ${pet.breed}`;
+  petList.appendChild(listItem);
+
+  document.getElementById("petName").value = "";
+  document.getElementById("ownerName").value = "";
+  document.getElementById("species").value = "";
+  document.getElementById("breed").value = "";
+};
